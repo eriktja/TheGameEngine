@@ -1,13 +1,16 @@
 package hiof.rammeverk;
 
-import hiof.rammeverk.TheGameEngine.GameLoopExample;
+import hiof.rammeverk.TheGameEngine.Window.GameBuilder;
+import hiof.rammeverk.TheGameEngine.Behavior.GameLoopExample;
 import hiof.rammeverk.TheGameEngine.*;
+import hiof.rammeverk.TheGameEngine.GameObjects.*;
+import hiof.rammeverk.TheGameEngine.Behavior.ObjectCreator;
 
 import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
-        App app = new App(1020, 800, ObjectCreator.create());
+        App app = new App(1900, 1000, ObjectCreator.create());
 
         GameLoopExample loop = new GameLoopExample(app);
         GameBuilder game = GameBuilder.createGame(app, loop);

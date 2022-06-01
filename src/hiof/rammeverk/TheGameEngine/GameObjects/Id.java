@@ -1,4 +1,4 @@
-package hiof.rammeverk.TheGameEngine;
+package hiof.rammeverk.TheGameEngine.GameObjects;
 
 /**
  * Identifiers to be applied to <em>GameObjects</em>

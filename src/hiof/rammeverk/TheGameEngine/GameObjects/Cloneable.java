@@ -1,4 +1,4 @@
-package hiof.rammeverk.TheGameEngine;
+package hiof.rammeverk.TheGameEngine.GameObjects;
 
 /**
  * Interface created to implement prototype pattern.

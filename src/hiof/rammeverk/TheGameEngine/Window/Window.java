@@ -1,4 +1,9 @@
-package hiof.rammeverk.TheGameEngine;
+package hiof.rammeverk.TheGameEngine.Window;
+
+import hiof.rammeverk.TheGameEngine.*;
+import hiof.rammeverk.TheGameEngine.GameObjects.GameObject;
+import hiof.rammeverk.TheGameEngine.GameObjects.KeyInput;
+import hiof.rammeverk.TheGameEngine.Behavior.GameLoop;
 
 import javax.swing.JFrame;
 import java.awt.Graphics;
@@ -7,8 +12,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.image.BufferStrategy;
 import java.io.Serial;
-
-import static hiof.rammeverk.TheGameEngine.HeadUpDisplay.*;
 
 /**
  * Creates a Window for the game to be rendered on.

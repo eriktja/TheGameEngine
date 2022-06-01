@@ -1,4 +1,7 @@
-package hiof.rammeverk.TheGameEngine;
+package hiof.rammeverk.TheGameEngine.GameObjects;
+
+import hiof.rammeverk.TheGameEngine.ApplicationHandler;
+import hiof.rammeverk.TheGameEngine.Window.Window;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

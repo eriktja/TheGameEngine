@@ -1,5 +1,7 @@
-package hiof.rammeverk.TheGameEngine;
+package hiof.rammeverk.TheGameEngine.Window;
 
+
+import hiof.rammeverk.TheGameEngine.Helpers.Limiter;
 
 import java.awt.Color;
 import java.awt.Graphics;

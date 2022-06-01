@@ -1,4 +1,9 @@
-package hiof.rammeverk.TheGameEngine;
+package hiof.rammeverk.TheGameEngine.GameObjects;
+
+import hiof.rammeverk.TheGameEngine.ApplicationHandler;
+import hiof.rammeverk.TheGameEngine.Behavior.GameLoop;
+import hiof.rammeverk.TheGameEngine.Window.HeadUpDisplay;
+import hiof.rammeverk.TheGameEngine.Helpers.Limiter;
 
 import java.awt.Rectangle;
 import java.awt.Color;

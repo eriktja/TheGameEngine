@@ -1,4 +1,4 @@
-package hiof.rammeverk.TheGameEngine;
+package hiof.rammeverk.TheGameEngine.Helpers;
 
 /**
  * Help set maximin and minimum value for certain variables.

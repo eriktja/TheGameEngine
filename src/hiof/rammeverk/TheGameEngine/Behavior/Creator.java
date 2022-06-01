@@ -1,4 +1,9 @@
-package hiof.rammeverk.TheGameEngine;
+package hiof.rammeverk.TheGameEngine.Behavior;
+
+import hiof.rammeverk.TheGameEngine.ApplicationHandler;
+import hiof.rammeverk.TheGameEngine.GameObjects.Cloneable;
+import hiof.rammeverk.TheGameEngine.GameObjects.GameObject;
+import hiof.rammeverk.TheGameEngine.GameObjects.Id;
 
 import java.util.LinkedList;
 import java.util.List;

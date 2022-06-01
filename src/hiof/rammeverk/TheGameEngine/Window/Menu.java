@@ -1,4 +1,6 @@
-package hiof.rammeverk.TheGameEngine;
+package hiof.rammeverk.TheGameEngine.Window;
+
+import hiof.rammeverk.TheGameEngine.ApplicationHandler;
 
 import java.awt.Color;
 import java.awt.Graphics;

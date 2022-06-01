@@ -1,5 +1,9 @@
 package hiof.rammeverk.TheGameEngine;
 
+import hiof.rammeverk.TheGameEngine.Window.Window;
+import hiof.rammeverk.TheGameEngine.GameObjects.GameObject;
+import hiof.rammeverk.TheGameEngine.Behavior.Creator;
+
 import java.awt.Graphics;
 import java.util.LinkedList;
 

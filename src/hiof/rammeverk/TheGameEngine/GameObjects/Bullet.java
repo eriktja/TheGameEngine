@@ -1,4 +1,6 @@
-package hiof.rammeverk.TheGameEngine;
+package hiof.rammeverk.TheGameEngine.GameObjects;
+
+import hiof.rammeverk.TheGameEngine.ApplicationHandler;
 
 import java.awt.Rectangle;
 import java.awt.Color;

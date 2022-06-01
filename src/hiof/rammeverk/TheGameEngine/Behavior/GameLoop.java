@@ -1,4 +1,8 @@
-package hiof.rammeverk.TheGameEngine;
+package hiof.rammeverk.TheGameEngine.Behavior;
+
+import hiof.rammeverk.TheGameEngine.ApplicationHandler;
+import hiof.rammeverk.TheGameEngine.GameObjects.Cloneable;
+import hiof.rammeverk.TheGameEngine.GameObjects.GameObject;
 
 /**
  * Describes how the game behaves for each iteration.
