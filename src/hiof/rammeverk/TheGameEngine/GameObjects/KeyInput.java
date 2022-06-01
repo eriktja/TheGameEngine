@@ -2,6 +2,7 @@ package hiof.rammeverk.TheGameEngine.GameObjects;
 
 import hiof.rammeverk.TheGameEngine.ApplicationHandler;
 import hiof.rammeverk.TheGameEngine.Window.GameBuilder;
+import hiof.rammeverk.TheGameEngine.Window.GameState;
 import hiof.rammeverk.TheGameEngine.Window.Window;
 
 import java.awt.event.KeyAdapter;
@@ -67,7 +68,7 @@ public class KeyInput extends KeyAdapter {
                     }
                 }
             }
-            if(gameBuilder.gameState() == Window.GameState.GAME)
+            if(gameBuilder.gameState() == GameState.GAME)
                 if(key == KeyEvent.VK_P){
                     keyDown[5] = true;
                     gameBuilder.setPaused(!gameBuilder.isPaused());

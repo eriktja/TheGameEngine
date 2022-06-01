@@ -10,7 +10,7 @@ import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
-        App app = new App(1900, 1000, ObjectCreator.create());
+        App app = new App(1000, 800, ObjectCreator.create());
 
         GameLoopExample loop = new GameLoopExample(app);
         GameBuilder game = GameBuilder.createGame(app, loop);
@@ -30,7 +30,7 @@ public class Main {
         //lol
         enmy.setColor(Color.BLACK);
         app.getCreator().addPrototype(enmy);
-
+        game.setBackGround(Color.white);
         game.start();
     }
 }

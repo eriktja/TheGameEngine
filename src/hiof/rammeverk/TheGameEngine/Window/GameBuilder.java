@@ -4,6 +4,7 @@ import hiof.rammeverk.TheGameEngine.ApplicationHandler;
 import hiof.rammeverk.TheGameEngine.Behavior.GameLoop;
 import hiof.rammeverk.TheGameEngine.GameObjects.KeyInput;
 
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 
 /**
@@ -124,7 +125,7 @@ public class GameBuilder {
         window.addKeyListener(keyAdapter);
     }
 
-    public Window.GameState gameState(){
+    public GameState gameState(){
         return window.gameState;
     }
 
@@ -133,5 +134,17 @@ public class GameBuilder {
     }
     public void setPaused(boolean paused){
         Window.paused = paused;
+    }
+
+    public Menu getMenu() {
+        return window.getMenu();
+    }
+
+    public void setBackGround(Color backGround) {
+        window.setBackGround(backGround);
+    }
+
+    public void setTitle(String title) {
+        window.setTitle(title);
     }
 }

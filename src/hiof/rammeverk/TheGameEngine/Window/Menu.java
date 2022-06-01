@@ -92,16 +92,16 @@ public final class Menu extends MouseAdapter {
         int mX = e.getX();
         int mY = e.getY();
 
-        if(window.gameState == Window.GameState.MENU){
+        if(window.gameState == GameState.MENU){
             // Play button
             if(mouseOver(mX, mY, centerX, topY, buttonWidth, buttonHeight)){
                 app.clearAll();
                 hud.reset();
-                window.gameState = Window.GameState.GAME;
+                window.gameState = GameState.GAME;
             }
             // Help button
             if(mouseOver(mX, mY, centerX, centerY, buttonWidth, buttonHeight)){
-                window.gameState = Window.GameState.HELP;
+                window.gameState = GameState.HELP;
             }
             // Quit button
             if(mouseOver(mX, mY, centerX, bottomY, buttonWidth, buttonHeight)){
@@ -109,22 +109,22 @@ public final class Menu extends MouseAdapter {
             }
         }
 
-        if(window.gameState ==  Window.GameState.HELP){
+        if(window.gameState ==  GameState.HELP){
             // Back button
             if(mouseOver(mX, mY, centerX, bottomY, buttonWidth, buttonHeight)){
-                window.gameState = Window.GameState.MENU;
+                window.gameState = GameState.MENU;
             }
         }
-        if(window.gameState ==  Window.GameState.LOSE){
+        if(window.gameState ==  GameState.LOSE){
             // Back button
             if(mouseOver(mX, mY, centerX, bottomY, buttonWidth, buttonHeight)){
-                window.gameState = Window.GameState.MENU;
+                window.gameState = GameState.MENU;
             }
         }
-        if(window.gameState ==  Window.GameState.WIN){
+        if(window.gameState ==  GameState.WIN){
             // Back button
             if(mouseOver(mX, mY, centerX, bottomY, buttonWidth, buttonHeight)){
-                window.gameState = Window.GameState.MENU;
+                window.gameState = GameState.MENU;
             }
         }
     }
@@ -160,7 +160,7 @@ public final class Menu extends MouseAdapter {
     public void render(Graphics g) {
         Font fnt1 = new Font("arial", Font.BOLD, 50);
         Font fnt2 = new Font("arial", Font.BOLD, 30);
-        if (window.gameState == Window.GameState.MENU) {
+        if (window.gameState == GameState.MENU) {
             g.setFont(fnt1);
             g.setColor(Color.black);
             g.drawString(topText, centerX + 90, topY - 30);
@@ -184,7 +184,7 @@ public final class Menu extends MouseAdapter {
             g.setColor(Color.white);
             g.drawString(quitButtonText, centerX + 90, bottomY + 65);
 
-        } else if (window.gameState == Window.GameState.HELP) {
+        } else if (window.gameState == GameState.HELP) {
             g.setFont(fnt1);
             g.setColor(Color.black);
             g.drawString(settingButtonText, centerX + 90, topY - 30);
@@ -201,7 +201,7 @@ public final class Menu extends MouseAdapter {
             g.setFont(fnt1);
             g.setColor(Color.white);
             g.drawString(backButtonText, centerX + 90, bottomY + 65);
-        } else if (window.gameState == Window.GameState.LOSE) {
+        } else if (window.gameState == GameState.LOSE) {
             g.setFont(fnt1);
             g.setColor(Color.black);
             g.drawString(loseMessage, centerX, topY);
@@ -219,7 +219,7 @@ public final class Menu extends MouseAdapter {
             g.setFont(fnt1);
             g.setColor(Color.white);
             g.drawString(topText, centerX + 90, bottomY + 65);
-        }else if (window.gameState == Window.GameState.WIN) {
+        }else if (window.gameState == GameState.WIN) {
             g.setFont(fnt1);
             g.setColor(Color.black);
             g.drawString(winMessage, centerX, topY);
@@ -237,7 +237,7 @@ public final class Menu extends MouseAdapter {
             g.setFont(fnt1);
             g.setColor(Color.white);
             g.drawString(topText, centerX + 90, bottomY + 65);
-        } else if (window.gameState == Window.GameState.GAME) {
+        } else if (window.gameState == GameState.GAME) {
             if (Window.paused) {
                 g.setFont(fnt1);
                 g.setColor(Color.RED);

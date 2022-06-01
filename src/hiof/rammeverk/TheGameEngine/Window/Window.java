@@ -33,7 +33,6 @@ public class Window extends Canvas implements Runnable{
     private static Window window;
     private final int width;
     private final int height;
-    protected static boolean paused = false;
     private String title = "The Game Engine";
     private Thread thread;
     private boolean running = false;
@@ -42,6 +41,8 @@ public class Window extends Canvas implements Runnable{
     private GameLoop gameLoop;
     private final Menu menu;
     private Color backGround = Color.LIGHT_GRAY;
+    private JFrame frame;
+    protected static boolean paused = false;
 
     /**
      * Enum used to decide the state of the game. <br>
@@ -49,13 +50,6 @@ public class Window extends Canvas implements Runnable{
      * @see Menu
      * @see KeyInput
      */
-    public enum GameState {
-        MENU,
-        GAME,
-        HELP,
-        LOSE,
-        WIN
-    }
 
     protected GameState gameState = GameState.MENU;
 
@@ -78,7 +72,7 @@ public class Window extends Canvas implements Runnable{
         this.hud = hud;
         menu = new Menu(this, app, hud);
         this.addMouseListener(menu);
-        JFrame frame = new JFrame(title);
+        frame = new JFrame(title);
         frame.setPreferredSize(new Dimension(width, height));
         frame.setMaximumSize(new Dimension(width, height));
         frame.setMinimumSize(new Dimension(width, height));
@@ -99,7 +93,7 @@ public class Window extends Canvas implements Runnable{
      * @return {@code Window}
      *
      */
-    public static Window create(ApplicationHandler app, HeadUpDisplay hud){
+    protected static Window create(ApplicationHandler app, HeadUpDisplay hud){
         if(window == null){
             window = new Window(app,hud);
         }
@@ -111,7 +105,7 @@ public class Window extends Canvas implements Runnable{
      * @param gameLoop {@code GameLoop}
      * @see GameLoop
      */
-    public void setGameLoop(GameLoop gameLoop) {
+    protected void setGameLoop(GameLoop gameLoop) {
         this.gameLoop = gameLoop;
     }
 
@@ -122,7 +116,7 @@ public class Window extends Canvas implements Runnable{
      * </p>
      * @return {@code Window}
      */
-    public static Window get(){
+    protected static Window get(){
         return window;
     }
 
@@ -133,7 +127,7 @@ public class Window extends Canvas implements Runnable{
      * </p>
      * @see java.lang.Thread
      */
-    public synchronized void start(){
+    protected synchronized void start(){
         thread = new Thread(this);
         try{
             thread.start();
@@ -148,7 +142,7 @@ public class Window extends Canvas implements Runnable{
      * Stop and join the {@code Thread} started with {@code start()}.
      * @see java.lang.Thread
      */
-    public synchronized void stop(){
+    protected synchronized void stop(){
         try {
             thread.join();
             running = false;
@@ -228,15 +222,9 @@ public class Window extends Canvas implements Runnable{
             return;
         }
         Graphics g = bs.getDrawGraphics();
-//        Graphics ground = bs.getDrawGraphics();
-
         g.setColor(backGround);
         g.fillRect(0,0,width, height);
-//        ground.setColor(Color.PINK);
-//        ground.fillRect(0,height-140,width, 120);
-
         app.render(g);
-//        app.render(ground);
 
         if(gameState == GameState.GAME){
             hud.render(g);
@@ -264,16 +252,17 @@ public class Window extends Canvas implements Runnable{
         gameState = GameState.WIN;
     }
 
-    public Menu getMenu() {
+    protected Menu getMenu() {
         return menu;
     }
 
-    public void setBackGround(Color backGround) {
+    protected void setBackGround(Color backGround) {
         this.backGround = backGround;
     }
 
-    public void setTitle(String title){
-        this.title = title;
+    protected void setTitle(String title) {
+        frame.setTitle(title);
     }
+
 }
 
