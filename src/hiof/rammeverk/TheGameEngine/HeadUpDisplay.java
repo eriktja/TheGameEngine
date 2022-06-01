@@ -126,4 +126,15 @@ public class HeadUpDisplay {
     public static void setCounter(int counter) {
         HeadUpDisplay.counter = counter;
     }
+
+    /**
+     * Nicely formated toString for saving your score to an external file.
+     * @return score level and counter.
+     */
+    @Override
+    public String toString() {
+        return "Score: " + score +
+                "\nLevel: " + level +
+                "\nKill count: " + HeadUpDisplay.getCounter();
+    }
 }
