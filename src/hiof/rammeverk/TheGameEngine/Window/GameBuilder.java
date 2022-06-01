@@ -136,14 +136,26 @@ public class GameBuilder {
         Window.paused = paused;
     }
 
+    /**
+     * Use to access Menu
+     * @return {@code Menu}
+     */
     public Menu getMenu() {
         return window.getMenu();
     }
 
+    /**
+     * Change background color of the window
+     * @param backGround {@code Color}
+     */
     public void setBackGround(Color backGround) {
         window.setBackGround(backGround);
     }
 
+    /**
+     * Change title displayed in swing.Frame.
+     * @param title
+     */
     public void setTitle(String title) {
         window.setTitle(title);
     }
