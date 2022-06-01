@@ -125,6 +125,10 @@ public class GameBuilder {
         window.addKeyListener(keyAdapter);
     }
 
+    /**
+     * See the {@code GameState} of {@code Window}
+     * @return {@code GameState}
+     */
     public GameState gameState(){
         return window.gameState;
     }
