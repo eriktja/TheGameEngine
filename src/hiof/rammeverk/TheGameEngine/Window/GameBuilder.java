@@ -129,9 +129,18 @@ public class GameBuilder {
         return window.gameState;
     }
 
+    /**
+     * Check if window is paused.
+     * @return true if game is paused
+     */
     public boolean isPaused(){
         return Window.paused;
     }
+
+    /**
+     * Change state of paused in window.
+     * @param paused {@code boolean}
+     */
     public void setPaused(boolean paused){
         Window.paused = paused;
     }
