@@ -123,4 +123,15 @@ public class GameBuilder {
     public void setKeyAdapter(KeyAdapter keyAdapter){
         window.addKeyListener(keyAdapter);
     }
+
+    public Window.GameState gameState(){
+        return window.gameState;
+    }
+
+    public boolean isPaused(){
+        return Window.paused;
+    }
+    public void setPaused(boolean paused){
+        Window.paused = paused;
+    }
 }

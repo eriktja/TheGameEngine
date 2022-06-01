@@ -33,7 +33,7 @@ public class Window extends Canvas implements Runnable{
     private static Window window;
     private final int width;
     private final int height;
-    public static boolean paused = false;
+    protected static boolean paused = false;
     private String title = "The Game Engine";
     private Thread thread;
     private boolean running = false;
@@ -57,7 +57,7 @@ public class Window extends Canvas implements Runnable{
         WIN
     }
 
-    public GameState gameState = GameState.MENU;
+    protected GameState gameState = GameState.MENU;
 
     /**
      * Returns a new instance of window.

@@ -1,6 +1,7 @@
 package hiof.rammeverk.TheGameEngine.GameObjects;
 
 import hiof.rammeverk.TheGameEngine.ApplicationHandler;
+import hiof.rammeverk.TheGameEngine.Window.GameBuilder;
 import hiof.rammeverk.TheGameEngine.Window.Window;
 
 import java.awt.event.KeyAdapter;
@@ -20,12 +21,12 @@ import java.util.ConcurrentModificationException;
 public class KeyInput extends KeyAdapter {
 
     private final ApplicationHandler app;
-    private final Window window;
+    private final GameBuilder gameBuilder;
     private final Boolean[] keyDown = new Boolean[6];
 
-    public KeyInput(ApplicationHandler app, Window window) {
+    public KeyInput(ApplicationHandler app, GameBuilder gameBuilder) {
         this.app = app;
-        this.window = window;
+        this.gameBuilder = gameBuilder;
 
         keyDown[0]=false;
         keyDown[1]=false;
@@ -66,11 +67,10 @@ public class KeyInput extends KeyAdapter {
                     }
                 }
             }
-            if(window.gameState == Window.GameState.GAME)
+            if(gameBuilder.gameState() == Window.GameState.GAME)
                 if(key == KeyEvent.VK_P){
                     keyDown[5] = true;
-                    Window.paused = !Window.paused;
-                    System.out.println(Window.paused);
+                    gameBuilder.setPaused(!gameBuilder.isPaused());
                 }
 
             // Exit with esc

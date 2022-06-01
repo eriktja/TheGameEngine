@@ -15,7 +15,7 @@ public class Main {
         GameLoopExample loop = new GameLoopExample(app);
         GameBuilder game = GameBuilder.createGame(app, loop);
 
-        game.setKeyAdapter(new KeyInput(app, game.getWindow()));
+        game.setKeyAdapter(new KeyInput(app, game));
         PlayerCharacter player = PlayerCharacter.create(Id.PLAYER, app);
         EnemyCharacter enemyCharacter = EnemyCharacter.create(Id.ENEMY_1, app);
         enemyCharacter.setColor(Color.PINK);
