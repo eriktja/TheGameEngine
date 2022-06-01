@@ -18,14 +18,13 @@
 - Erik Teien Jarem [@eriktja](https://www.github.com/eriktja)
 
 ## Branches
-- If you want a demonstration of a working game, clone the demo-branch.
-  - To get to know this framework, we recommend starting with the demo-branch.
-- For a clean version of the framework with no implementation, clone the master-branch.
+### demo-branch
+>If you want a demonstration of a working game, clone the demo-branch.
+> - This is a simple "top down"-shooter, where you need to kill zombies.
+>- If  you want to learn how to use this framework, this is a nice place to start.
+### main-branch
+>For a clean version of the framework with no implementation, clone the main-branch.
 
-
-## Demo branch
-- This is a simple "top down"-shooter, where you need to kill zombies.
-- If  you want to learn how to use this framework, this is a nice place to start.
 
 ## Installation
 1. Clone the repository.
