@@ -68,7 +68,8 @@
 > 3. A new instance of the __GameBuilder__-class. 
 >    1. Needs an __ApplicationHandler__ and a __GameLoop__.
 >    2. Will create a __Window__ and __Menu__.
->    3. Specify __KeyAdapter__ by using the __setKeyAdapter()__-method in __GameBuilder__.
+>    3. Will create a __HeadUpDisplay__ if none is given in create-method. 
+>    4. Specify __KeyAdapter__ by using the __setKeyAdapter()__-method in __GameBuilder__.
 > 4. Two methods for __Adding GameObjects__
 >    1. __Method 1__
 >       1. Create _prototypes_ by making an instance of __ObjectCreator__ and adding the GameObjects you make to the prototypes list.
@@ -76,5 +77,5 @@
 >    2. __Method 2__
 >       1. Create the __GameObjects__ directly in __GameLoop.tick()__, and add them to __ApplicationHandler.objects__.
 
->Try this to get started. Good luck!
+>### Try this to get started. Good luck!
 >![Example of code-implementation](Resources/images/main.jpg)
