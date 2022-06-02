@@ -26,9 +26,10 @@
 1. Clone the repository.
 2. Open the project in your favorite IDE
 >This Framework use Java.awt which is native to Java Development Kit. 
-> <br>__If you are using the demo:__
-3. Build the project and run Main.java.
-4. Get to know the framework by making changes and new implementations.
+> <br>__If you want to try the demo:__
+3. View the image at the end of the readme.md
+4. Build the project and run Main.java.
+5. Get to know the framework by making changes and new implementations.
 
 
 ## Making a game
@@ -76,5 +77,5 @@
 >    2. __Method 2__
 >       1. Create the __GameObjects__ directly in __GameLoop.tick()__, and add them to __ApplicationHandler.objects__.
 
-
-
+>Try this to get started. Good luck!
+>![Example of code-implementation](Resources/images/main.jpg)
