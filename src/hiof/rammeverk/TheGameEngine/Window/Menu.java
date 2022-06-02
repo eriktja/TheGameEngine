@@ -24,14 +24,14 @@ import java.awt.event.MouseEvent;
  */
 public final class Menu extends MouseAdapter {
     private final Window window;
+    private final ApplicationHandler app;
+    private final HeadUpDisplay hud;
     private final int centerX;
     private final int centerY;
     private final int bottomY;
     private final int topY;
     private int buttonWidth = 300;
     private int buttonHeight = 100;
-    private final ApplicationHandler app;
-    private final HeadUpDisplay hud;
     private String topText = "Menu";
     private String startButtonText = "Play";
     private String settingButtonText = "Help";

@@ -13,7 +13,7 @@ import java.awt.event.KeyAdapter;
  *     Uses the <em>Singleton pattern</em>.
  * </p>
  * <p>
- *     Use this class to handle {@code Window}.
+ *     Use this class to handle {@code Window} and {@code Menu}.
  * </p>
  */
 public class GameBuilder {
@@ -115,7 +115,7 @@ public class GameBuilder {
      * Set {@code KeyAdapter} to be used in the game. <br>
      * This method calls the {@code java.awt.Canvas.addKeyListener()}-method.<br>
      * {@code Window} inherits from {@code Canvas}.
-     * @param keyAdapter
+     * @param keyAdapter {@code KeyAdapter}
      * @see Window
      * @see java.awt.Canvas
      * @see KeyInput
@@ -167,9 +167,12 @@ public class GameBuilder {
 
     /**
      * Change title displayed in swing.Frame.
-     * @param title
+     * @param title {@code String} displayed in window frame.
      */
     public void setTitle(String title) {
         window.setTitle(title);
+    }
+    public void setWinCondition(int winCondition) {
+        window.getHud().setWinCondition(winCondition);
     }
 }

@@ -30,18 +30,13 @@ import java.util.Random;
  */
 public class EnemyCharacter extends GameObject {
     private GameObject player;
+    private int health;
     private final int height = 100;
     private final int width = 40;
-    private int health;
-
     private final Random r = new Random();
 
     /**
      * Constructor for the class
-     * <p>
-     *     If no {@code GameObject} with the {@code Id.PLAYER} exist in {@code ApplicationHandler.objects} the {@code player} variable will be {@code null}.<br>
-     *     This class will follow the {@code Id.PLAYER GameObject}.
-     * </p>
      * @param id {@code Id}
      * @param app {@code ApplicationHandler}
      * @see Id
@@ -49,15 +44,7 @@ public class EnemyCharacter extends GameObject {
      */
     private EnemyCharacter(Id id, ApplicationHandler app) {
         super(id, app);
-
-        for (int i = 0; i < this.app.objects.size(); i ++){
-            if(this.app.objects.get(i).getId() == Id.PLAYER) {
-                this.player = this.app.objects.get(i);
-                break;
-            }
-
-        }
-
+        // Spawns at a random position.
         setXPos(r.nextInt(app.getWindowWidth()));
         setYPos(r.nextInt(app.getWindowHeight()));
         health = 100;
@@ -65,24 +52,29 @@ public class EnemyCharacter extends GameObject {
 
     /**
      * Constructor that returns a copy of existing EnemyCharacter
+     *<p>
+     *    If no {@code GameObject} with the {@code Id.PLAYER} exist in {@code ApplicationHandler.objects} the {@code player} variable will be {@code null}.
+     *    This will cause a NullPointerException.<br>
+     *    This class will follow the {@code Id.PLAYER GameObject}.
+     *</p>
      * @param enemyCharacter {@code EnemyCharacter}
      */
     private EnemyCharacter(EnemyCharacter enemyCharacter) {
-        super(enemyCharacter.id, enemyCharacter.app);
+        super(enemyCharacter.getId(), enemyCharacter.getApp());
         setMovementSpeed(enemyCharacter.getMovementSpeed());
         setHeight(enemyCharacter.getHeight());
         setWidth(enemyCharacter.getWidth());
         setColor(enemyCharacter.getColor());
 
-        for (int i = 0; i < this.app.objects.size(); i ++){
-            if(this.app.objects.get(i).getId() == Id.PLAYER) {
-                this.player = this.app.objects.get(i);
+        for (int i = 0; i < getApp().objects.size(); i ++){
+            if(getApp().objects.get(i).getId() == Id.PLAYER) {
+                this.player = getApp().objects.get(i);
                 break;
             }
         }
 
-        setXPos(r.nextInt(app.getWindowWidth()));
-        setYPos(r.nextInt(app.getWindowHeight()));
+        setXPos(r.nextInt(getApp().getWindowWidth()));
+        setYPos(r.nextInt(getApp().getWindowHeight()));
         health = 100;
     }
 
@@ -118,11 +110,8 @@ public class EnemyCharacter extends GameObject {
     }
 
     /**
-     * This implementation of the {@code tick}-method will make the {@code GameObject} follow <br>
-     * the {@code GameObject} stored in the {@code GameObject player}-instance variable.
-     * <p>
-     *     It also implements {@code collision}.
-     * </p>
+     * This implementation of the {@code tick}-method will make this {@code GameObject} follow <br>
+     * the {@code GameObject} stored in the {@code player}-instance variable.
      */
     @Override
     public void tick() {
@@ -130,49 +119,49 @@ public class EnemyCharacter extends GameObject {
 
         collision();
         if(health <= 0){
-            this.id = Id.DEAD;
+            setId(Id.DEAD);
             HeadUpDisplay.setHealth(HeadUpDisplay.getHealth()+2);
             HeadUpDisplay.setCounter(HeadUpDisplay.getCounter()+1);
-            Bullet bul1 = new Bullet(Id.BULLET, app);
-            Bullet bul2 = new Bullet(Id.BULLET, app);
-            Bullet bul3 = new Bullet(Id.BULLET, app);
-            Bullet bul4 = new Bullet(Id.BULLET, app);
+            Bullet bul1 = new Bullet(Id.BULLET, getApp());
+            Bullet bul2 = new Bullet(Id.BULLET, getApp());
+            Bullet bul3 = new Bullet(Id.BULLET, getApp());
+            Bullet bul4 = new Bullet(Id.BULLET, getApp());
             bul1.setVelX(10);
             bul1.setVelY(10);
-            bul1.setXPos(this.xPos);
-            bul1.setYPos(this.yPos);
+            bul1.setXPos(getXPos());
+            bul1.setYPos(getYPos());
             bul2.setVelX(-10);
             bul2.setVelY(-10);
-            bul2.setXPos(this.xPos);
-            bul2.setYPos(this.yPos);
+            bul2.setXPos(getXPos());
+            bul2.setYPos(getYPos());
             bul3.setVelX(-10);
             bul3.setVelY(10);
-            bul3.setXPos(this.xPos);
-            bul3.setYPos(this.yPos);
+            bul3.setXPos(getXPos());
+            bul3.setYPos(getYPos());
             bul4.setVelX(10);
             bul4.setVelY(-10);
-            bul4.setXPos(this.xPos);
-            bul4.setYPos(this.yPos);
-            app.addObject(bul1);
-            app.addObject(bul2);
-            app.addObject(bul3);
-            app.addObject(bul4);
+            bul4.setXPos(getXPos());
+            bul4.setYPos(getYPos());
+            getApp().addObject(bul1);
+            getApp().addObject(bul2);
+            getApp().addObject(bul3);
+            getApp().addObject(bul4);
         }
     }
 
     /**
-     * This implementation of {@code collision} detect collision with {@code Id.BULLET}.
+     * This implementation of {@code collision} detects collision with {@code Id.BULLET}.
      * <br> Uses {@code hitBox} and {@code Rectangle}.
      * @see Rectangle
      * @see Id
      */
     private void collision(){
-        for (int i = 0; i < app.objects.size(); i++) {
-            if(app.objects.get(i).getId() == Id.BULLET && this.hitBox().intersects(app.objects.get(i).hitBox())){
+        for (int i = 0; i < getApp().objects.size(); i++) {
+            if(getApp().objects.get(i).getId() == Id.BULLET && this.hitBox().intersects(getApp().objects.get(i).hitBox())){
                 // Collision
                 health -= 10;
                 // Remove bullet from game.
-                app.objects.get(i).setId(Id.DEAD);
+                getApp().objects.get(i).setId(Id.DEAD);
             }
         }
     }
@@ -185,9 +174,9 @@ public class EnemyCharacter extends GameObject {
     @Override
     public void render(Graphics g) {
         g.setColor(getColor());
-        g.fillRect((int) xPos, (int) yPos, width, height);
+        g.fillRect((int) getXPos(), (int) getYPos(), width, height);
         g.setColor(Color.GREEN);
-        g.fillRect((int) xPos,(int) yPos + (height/3), width, height/3);
+        g.fillRect((int) getXPos(),(int) getYPos() + (height/3), width, height/3);
     }
 
     /**
@@ -199,9 +188,8 @@ public class EnemyCharacter extends GameObject {
      * @return Rectangle {@code java.awt.Rectangle}
      * @see Rectangle
      */
-
     @Override
     public Rectangle hitBox() {
-        return new Rectangle((int) xPos, (int) yPos, width, height);
+        return new Rectangle((int) getXPos(), (int) getYPos(), width, height);
     }
 }

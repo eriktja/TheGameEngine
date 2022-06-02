@@ -20,7 +20,6 @@ public class Main {
         EnemyCharacter enemyCharacter = EnemyCharacter.create(Id.ENEMY_1, app);
         enemyCharacter.setColor(Color.PINK);
         app.getCreator().addPrototype(enemyCharacter);
-
         app.getCreator().addPrototype(player);
         app.getCreator().addPrototype(Bullet.create(Id.BULLET, app));
         app.getCreator().addPrototype(Bullet.create(Id.BULLET_2, app));

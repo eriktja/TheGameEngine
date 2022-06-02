@@ -30,16 +30,15 @@ import java.io.Serial;
 public class Window extends Canvas implements Runnable{
     @Serial
     private static final long serialVersionUID = -8754111336500953605L;
-    private static Window window;
-    private final int width;
-    private final int height;
-    private String title = "The Game Engine";
-    private Thread thread;
-    private boolean running = false;
+    private final Menu menu;
     private final ApplicationHandler app;
     private final HeadUpDisplay hud;
+    private static Window window;
+    private int width;
+    private int height;
+    private Thread thread;
+    private boolean running = false;
     private GameLoop gameLoop;
-    private final Menu menu;
     private Color backGround = Color.LIGHT_GRAY;
     private JFrame frame;
     protected static boolean paused = false;
@@ -50,7 +49,6 @@ public class Window extends Canvas implements Runnable{
      * @see Menu
      * @see KeyInput
      */
-
     protected GameState gameState = GameState.MENU;
 
     /**
@@ -72,7 +70,7 @@ public class Window extends Canvas implements Runnable{
         this.hud = hud;
         menu = new Menu(this, app, hud);
         this.addMouseListener(menu);
-        frame = new JFrame(title);
+        frame = new JFrame("The Game Engine");
         frame.setPreferredSize(new Dimension(width, height));
         frame.setMaximumSize(new Dimension(width, height));
         frame.setMinimumSize(new Dimension(width, height));
@@ -264,5 +262,7 @@ public class Window extends Canvas implements Runnable{
         frame.setTitle(title);
     }
 
+    protected HeadUpDisplay getHud() {
+        return hud;
+    }
 }
-

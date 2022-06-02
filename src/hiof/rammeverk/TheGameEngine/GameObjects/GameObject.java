@@ -21,7 +21,7 @@ import java.awt.Graphics;
  *     You can make changes and instantly see the changes in the game window.
  * </p>
  * <p>
- *     Implements Cloneable-interface with
+ *     Implements Cloneable-interface.
  * </p>
  * @see ApplicationHandler
  * @see GameObject
@@ -31,25 +31,22 @@ import java.awt.Graphics;
  * @see Cloneable
  */
 public class GameObject implements Cloneable {
-    protected ApplicationHandler app;
-    protected float xPos;
-    protected float yPos;
-    protected Id id;
-    protected float velX;
-    protected float velY;
-    private float movementSpeed;
+    private Id id;
+    private ApplicationHandler app;
     private Color color = Color.RED;
-
-    protected boolean movingLeft = false;
-
-    protected int width = 70;
-    protected int height = 70;
-
+    private float xPos;
+    private float yPos;
+    private float velX;
+    private float velY;
+    private float movementSpeed;
+    private int width = 70;
+    private int height = 70;
+    private boolean movingLeft = false;
 
     /**
      * Standard constructor that will position {@code this} object in the middle of screen.
      * @param id {@code Id}
-     * @param app {@code Applicationhandler}
+     * @param app {@code ApplicationHandler}
      * @see Id
      * @see ApplicationHandler
      */
@@ -98,10 +95,6 @@ public class GameObject implements Cloneable {
 
     /**
      * Behavior of {@code GameObject} for each iteration ({@code tick}) of the game.
-     * <p>
-     *     This implementation will have the object move at a certain speed,
-     *     <br> and turn around if it hits the edge of the window.
-     * </p>
      * @see ApplicationHandler
      * @see Window
      */
@@ -170,6 +163,22 @@ public class GameObject implements Cloneable {
         xPos += velX;
         yPos += velY;
 
+    }
+
+    public ApplicationHandler getApp() {
+        return app;
+    }
+
+    public void setApp(ApplicationHandler app) {
+        this.app = app;
+    }
+
+    public boolean isMovingLeft() {
+        return movingLeft;
+    }
+
+    public void setMovingLeft(boolean movingLeft) {
+        this.movingLeft = movingLeft;
     }
 
     public void setWidth(int width) {

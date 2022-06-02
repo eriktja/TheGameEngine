@@ -3,7 +3,6 @@ package hiof.rammeverk.TheGameEngine.GameObjects;
 import hiof.rammeverk.TheGameEngine.ApplicationHandler;
 import hiof.rammeverk.TheGameEngine.Window.GameBuilder;
 import hiof.rammeverk.TheGameEngine.Window.GameState;
-import hiof.rammeverk.TheGameEngine.Window.Window;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -20,7 +19,6 @@ import java.util.ConcurrentModificationException;
  *
  */
 public class KeyInput extends KeyAdapter {
-
     private final ApplicationHandler app;
     private final GameBuilder gameBuilder;
     private final Boolean[] keyDown = new Boolean[6];
@@ -64,7 +62,7 @@ public class KeyInput extends KeyAdapter {
                     }
                     if (key == KeyEvent.VK_SPACE) {
                         keyDown[4] = true;
-                        object.app.addObject(app.getCreator().cloneGameObject(Id.BULLET));
+                        object.getApp().addObject(app.getCreator().cloneGameObject(Id.BULLET));
                     }
                 }
             }
@@ -101,7 +99,7 @@ public class KeyInput extends KeyAdapter {
             if (key == KeyEvent.VK_P) keyDown[5]=false;
 
         }catch (ConcurrentModificationException ce){
-            System.out.println("Hello");
+            System.out.println("This will never happen");
         }
     }
 }

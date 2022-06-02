@@ -31,8 +31,6 @@ import java.awt.Graphics;
  */
 public class PlayerCharacter extends GameObject {
     private static PlayerCharacter prototype;
-    private int width = 30;
-    private int height = 100;
     private int limitRight;
     private int limitLeft;
     private int limitTop;
@@ -47,12 +45,13 @@ public class PlayerCharacter extends GameObject {
      */
     private PlayerCharacter(Id id, ApplicationHandler app) {
         super(id, app);
-
+        setWidth(30);
+        setHeight(100);
         setMovementSpeed(10);
     }
 
     private PlayerCharacter(PlayerCharacter playerCharacter) {
-        super(playerCharacter.id, playerCharacter.app);
+        super(playerCharacter.getId(), playerCharacter.getApp());
         setMovementSpeed(playerCharacter.getMovementSpeed());
         setHeight(playerCharacter.getHeight());
         setWidth(playerCharacter.getWidth());
@@ -82,7 +81,6 @@ public class PlayerCharacter extends GameObject {
         return prototype;
     }
 
-
     /**
      * Create a new instance of the class which is a copy of the prototype.
      * @return PlayerCharacter copy of prototype.
@@ -91,22 +89,6 @@ public class PlayerCharacter extends GameObject {
     @Override
     public PlayerCharacter cloneObject() {
         return new PlayerCharacter(prototype);
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
     }
 
     /**
@@ -128,14 +110,14 @@ public class PlayerCharacter extends GameObject {
      */
     @Override
     public void tick() {
-        xPos += velX;
-        yPos += velY;
-        if (velX < 0) {
-            movingLeft = true;
-        }else if (velX > 0)
-            movingLeft = false;
-        xPos = Limiter.border(xPos, limitLeft, app.getWindowWidth() - 48 - limitRight);
-        yPos = Limiter.border(yPos, limitTop, app.getWindowHeight() - 130 - limitBottom);
+        setXPos(getXPos() + getVelX());
+        setYPos(getYPos() + getVelY());
+        if (getVelX() < 0) {
+            setMovingLeft(true);
+        }else if (getVelX() > 0)
+            setMovingLeft(false);
+        setXPos(Limiter.border(getXPos(), limitLeft, getApp().getWindowWidth() - 48 - limitRight));
+        setYPos(Limiter.border(getYPos(), limitTop, getApp().getWindowHeight() - 130 - limitBottom));
         collision();
     }
 
@@ -147,7 +129,7 @@ public class PlayerCharacter extends GameObject {
     @Override
     public void render(Graphics g) {
         g.setColor(Color.BLACK);
-        g.fillRect((int) xPos, (int) yPos, width, height);
+        g.fillRect((int) getXPos(), (int) getYPos(), getWidth(), getHeight());
     }
 
     /**
@@ -157,14 +139,14 @@ public class PlayerCharacter extends GameObject {
      * @see Id
      */
     private void collision(){
-        for(int i = 0; i < super.app.objects.size(); i++){
-            if(app.objects.get(i).getId() == Id.BASIC_ENEMY || app.objects.get(i).getId() == Id.SMART_ENEMY){
+        for(int i = 0; i < getApp().objects.size(); i++){
+            if(getApp().objects.get(i).getId() == Id.BASIC_ENEMY || getApp().objects.get(i).getId() == Id.SMART_ENEMY){
                 // Collision
-                if(this.hitBox().intersects(app.objects.get(i).hitBox())){
+                if(this.hitBox().intersects(getApp().objects.get(i).hitBox())){
                     HeadUpDisplay.setHealth(HeadUpDisplay.getHealth() -2);
                 }
-            }else if(app.objects.get(i).getId() == Id.BOSS_ENEMY){
-                if(this.hitBox().intersects(app.objects.get(i).hitBox())){
+            }else if(getApp().objects.get(i).getId() == Id.BOSS_ENEMY){
+                if(this.hitBox().intersects(getApp().objects.get(i).hitBox())){
                     HeadUpDisplay.setHealth(HeadUpDisplay.getHealth() -1);
                 }
             }
@@ -182,7 +164,7 @@ public class PlayerCharacter extends GameObject {
      */
     @Override
     public Rectangle hitBox() {
-        return new Rectangle((int) xPos, (int) yPos, width, height);
+        return new Rectangle((int) getXPos(), (int) getYPos(), getWidth(), getHeight());
     }
 
     public void setLimitRight(int limitRight) {

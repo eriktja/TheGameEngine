@@ -16,38 +16,42 @@ import java.awt.Graphics;
  * @see Rectangle
  */
 public class Bullet extends GameObject {
-
     private static Bullet prototype;
     private GameObject shooter;
-    private final int height = 6;
-    private final int width = 6;
 
-    /** Returns a new instance of bullet
+    /** Returns a new instance of bullet with fixed velX speed.
      *
      * @param id The ID of the instance. Used to determine action in regard to other objects
-     * @param app Instance of {@code ApplicationHandler}.
+     * @param app {@code ApplicationHandler}.
      */
     public Bullet(Id id, ApplicationHandler app) {
         super(id, app);
-        velX = 15;
-        velY = 0;
+        setWidth(6);
+        setHeight(6);
+        setVelX(15);
+        setVelY(0);
     }
 
+    /**
+     * Direction of bullet depends on movement of shooter.
+     * @param bullet {@code Bullet}.
+     * @see GameObject
+     */
     public Bullet(Bullet bullet){
-        super(bullet.id, bullet.app);
+        super(bullet.getId(), bullet.getApp());
 
         setVelX(bullet.getVelX());
         setHeight(bullet.getHeight());
         setWidth(bullet.getWidth());
 
-        for(int i = 0; i < app.objects.size(); i++){
-            if(app.objects.get(i).getId() == Id.PLAYER)
-                shooter = app.objects.get(i);
+        for(int i = 0; i < getApp().objects.size(); i++){
+            if(getApp().objects.get(i).getId() == Id.PLAYER)
+                shooter = getApp().objects.get(i);
         }
-        if (shooter.movingLeft) {
+        if (shooter.isMovingLeft()) {
             setXPos(shooter.getXPos());
             setYPos(shooter.getYPos() + (shooter.getHeight() / 2.0f));
-            velX *= -1;
+            setVelX(getVelX() * -1);
         }else {
             setXPos(shooter.getXPos() + shooter.getWidth());
             setYPos(shooter.getYPos() + (shooter.getHeight() / 2.0f));
@@ -62,22 +66,22 @@ public class Bullet extends GameObject {
 
     @Override
     public void tick() {
-        xPos += velX;
-        yPos += velY;
+        setXPos(getXPos()+getVelX());
+        setYPos(getYPos()+getVelY());
 
-        if(yPos <= 0 || yPos >= app.getWindowHeight() - 32) this.id = Id.DEAD;
-        if(xPos <= 0 || xPos >= app.getWindowWidth() - 32)  this.id = Id.DEAD;
+        if(getYPos() <= 0 || getYPos() >= getApp().getWindowHeight() - 32) setId(Id.DEAD);
+        if(getXPos() <= 0 || getXPos() >= getApp().getWindowWidth() - 32)  setId(Id.DEAD);
     }
 
     @Override
     public void render(Graphics g) {
         g.setColor(Color.red);
-        g.fillRect((int) xPos, (int) yPos, width, height);
+        g.fillRect((int) getXPos(), (int) getYPos(), getWidth(), getHeight());
     }
 
     @Override
     public Rectangle hitBox() {
-        return new Rectangle((int) xPos, (int) yPos, width, height);
+        return new Rectangle((int) getXPos(), (int) getYPos(), getWidth(), getHeight());
     }
 
     /**

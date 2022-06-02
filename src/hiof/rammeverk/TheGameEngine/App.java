@@ -148,7 +148,6 @@ public class App implements ApplicationHandler{
         this.objects.add(object);
     }
 
-
     /**
      * Remove specific {@code GameObject} from the {@code objects}-list in {@code ApplicationHandler}
      * @param object GameObject

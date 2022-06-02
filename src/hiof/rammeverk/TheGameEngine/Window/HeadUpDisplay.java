@@ -16,12 +16,11 @@ import java.awt.Graphics;
  * @see GameBuilder
  */
 public class HeadUpDisplay {
-
     private static float health = 100;
+    private static int counter = 0;
     private int score = 0;
     private int level = 1;
-    private static int counter = 0;
-
+    private int winCondition = 50;
 
     /**
      * Updates {@code score}, {@code level} and {@code health}
@@ -50,18 +49,6 @@ public class HeadUpDisplay {
         g.drawString("Kill count: " + counter, 15, 96);
     }
 
-    public static float getHealth() {
-        return health;
-    }
-
-    public static void setHealth(float health) {
-        HeadUpDisplay.health = health;
-    }
-
-    public String getScore() {
-        return "" + score;
-    }
-
     /**
      * Called in {@code Window} to check if the game is lost.
      * <p>
@@ -84,7 +71,7 @@ public class HeadUpDisplay {
      */
 
     public boolean winGame(){
-        return counter == 50;
+        return counter == winCondition;
     }
 
     /**
@@ -99,6 +86,18 @@ public class HeadUpDisplay {
         setScore(0);
         setLevel(1);
         setHealth(100);
+    }
+
+    public static float getHealth() {
+        return health;
+    }
+
+    public static void setHealth(float health) {
+        HeadUpDisplay.health = health;
+    }
+
+    public String getScore() {
+        return "" + score;
     }
 
     public void setScore(int score) {
@@ -129,8 +128,12 @@ public class HeadUpDisplay {
         HeadUpDisplay.counter = counter;
     }
 
+    public void setWinCondition(int winCondition) {
+        this.winCondition = winCondition;
+    }
+
     /**
-     * Nicely formated toString for saving your score to an external file.
+     * Nicely formatted toString for saving your score to an external file.
      * @return score level and counter.
      */
     @Override
