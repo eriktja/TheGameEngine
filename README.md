@@ -72,10 +72,11 @@
 >    4. Specify __KeyAdapter__ by using the __setKeyAdapter()__-method in __GameBuilder__.
 > 4. Two methods for __Adding GameObjects__
 >    1. __Method 1__
->       1. Create _prototypes_ by making an instance of __ObjectCreator__ and adding the GameObjects you make to the prototypes list.
+>       1. Create _prototypes_ by making an instance of __ObjectCreator__ and adding the GameObjects you make to the prototypes list with the __addPrototype()__-method.
 >       2. In __GameLoop.tick()__ use __ObjectCreator.cloneGameObject()__ and add the returned GameObject to __ApplicationHandler.objects__.
 >    2. __Method 2__
 >       1. Create the __GameObjects__ directly in __GameLoop.tick()__, and add them to __ApplicationHandler.objects__.
+> 5. End your setup with __gameBuilder.start()__.
 
 ### Try this to get started. Good luck!
 >![Example of code-implementation](Resources/images/main.jpg)
