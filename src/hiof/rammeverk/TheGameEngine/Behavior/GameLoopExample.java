@@ -88,13 +88,11 @@ public class GameLoopExample implements GameLoop {
             HeadUpDisplay.setHealth(100);
             app.addObject(creator.cloneGameObject(Id.PLAYER));
             app.addObject(creator.cloneGameObject(Id.SMART_ENEMY));
-            app.addObject(creator.cloneGameObject(Id.ENEMY_1));
         }
         if(counter % 100 == 0)
             stage++;
         if(stage % 2 == 0 && counter % 100 == 0){
             app.addObject(creator.cloneGameObject(Id.SMART_ENEMY));
-            app.addObject(creator.cloneGameObject(Id.BASIC_ENEMY));
         }
         if(stage > 15 && counter % 100 == 0)
             app.addObject(creator.cloneGameObject(Id.SMART_ENEMY));

@@ -17,14 +17,10 @@
 - Simen Jacobsen Øygard [@simenyo](https://www.github.com/simenyo)
 - Erik Teien Jarem [@eriktja](https://www.github.com/eriktja)
 
-## Branches
-### demo-branch
->If you want a demonstration of a working game, clone the demo-branch.
-> - This is a simple "top down"-shooter, where you need to kill zombies.
->- If  you want to learn how to use this framework, this is a nice place to start.
-### main-branch
->For a clean version of the framework with no implementation, clone the main-branch.
-
+## Demo
+> This project contains a demo of a working game which is intended as an example of how this game engine can be used. 
+> - This is a simple "top down"-shooter, where you kill zombies.
+> - If  you want to learn how to use this framework, this is a nice place to start.
 
 ## Installation
 1. Clone the repository.
