@@ -25,7 +25,7 @@
 ## Installation
 1. Clone the repository.
 2. Open the project in your favorite IDE
->This Framework use Java.awt which is native to Java Development Kit. 
+>This Framework use Java.awt and Java.Swing. Both libraries are native to Java Development Kit. 
 > <br>__If you want to try the demo:__
 3. View the image at the end of the readme.md
 4. Build the project and run Main.java.
@@ -34,13 +34,12 @@
 
 ## Making a game
 
-> Clone the repository.<br> 
->Either branch will work.
+> Clone the repository.
 
 ### Step 1
 >Create your own class which extends GameObject. This is where you create the characters and items to appear in game.
 >   - __tick()__ is what the GameObject does. If you want it to move, this is where you implement it.
->   - __render()__ is called each iteration of the game. This is where you draw the GameObject. See demo-repo for examples.
+>   - __render()__ is called each iteration of the game. This is where you draw the GameObject. See demo for examples.
 >   - __hitbox()__ uses the size of the GameObject to return a java.awt.Rectangle. This is used in the collision()-method.
 >   - __collision()__ use this to control what happens when two GameObjects intersect. Use it in tick()-method.
 >   - __static create()__ calls the constructor. Can either be used to create a prototype to add it in Creator.prototypes or used directly in GameLoop.tick().
@@ -48,8 +47,8 @@
 >       - __Id__: When instantiating a new GameObject you need to give it an Id from the Id-enum. This is how GameObjects differentiate from other GameObjects, and how the framework decides which GameObject should be affected by KeyEvents. 
 ### Step 2
 > Create a new class which implements GameLoop. <br>This class is where you will specify when GameObjects are added to the game.
-> - __tick()__ is where the adding of GameObjects happens. We recommend using variables to track progress of the game.
-> - __reset()__ is called when the game has ended. Use this to reset variables used in tick().
+> - __tick()__ is where you add __GameObjects__ to __ApplicationHandler.objects__. We recommend using variables to track progress of the game.
+> - __reset()__ is called when the game has ended. Use this to reset variables used in __tick()__.
 ### Step 3
 > - Create a class which extends __KeyInput__ or make changes to the KeyInput-class to fit with your game-idea.
 > - Use Id's from the __Id__-enum to decide which GameObjects respond to KeyEvents. 
