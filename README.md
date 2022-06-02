@@ -77,5 +77,5 @@
 >    2. __Method 2__
 >       1. Create the __GameObjects__ directly in __GameLoop.tick()__, and add them to __ApplicationHandler.objects__.
 
->### Try this to get started. Good luck!
+### Try this to get started. Good luck!
 >![Example of code-implementation](Resources/images/main.jpg)
