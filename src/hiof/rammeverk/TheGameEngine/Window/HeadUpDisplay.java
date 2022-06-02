@@ -17,9 +17,17 @@ import java.awt.Graphics;
  */
 public class HeadUpDisplay {
     private static float health = 100;
+
+    /**
+     * Count game-events. In the demo this is used to count killed zombies.
+     */
     private static int counter = 0;
     private int score = 0;
     private int level = 1;
+
+    /**
+     * Use to determine when the game is won.
+     */
     private int winCondition = 50;
 
     /**
@@ -128,6 +136,10 @@ public class HeadUpDisplay {
         HeadUpDisplay.counter = counter;
     }
 
+    /**
+     * Set the condition for the game to end with the {@code WIN}-gameState.
+     * @param winCondition What must {@code counter} be for the game to end with a {@code WIN}-gameState
+     */
     public void setWinCondition(int winCondition) {
         this.winCondition = winCondition;
     }
