@@ -59,12 +59,10 @@ public class PlayerCharacter extends GameObject {
     }
 
     /**
-     * Create a prototype. Add to {@code Creator.prototypes}.
+     * Create an instance of this class.
      * <p>
      *     Instantiates an instance of {@code PlayerCharacter}.
-     *     <br>Add this instance to {@code Creator.prototypes}.
-     *     <br>Use {@code Creator.createGameObject} to instantiate a new object from {@code prototypes}.
-     *     <br>Add this instance to {@code ApplicationHandler.objects}.
+     *     <br> Implements the singleton pattern.
      * </p>
      * @param id {@code Id}
      * @param app {@code ApplicationHandler}
