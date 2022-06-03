@@ -30,7 +30,7 @@ import java.awt.Graphics;
  * @see Limiter
  */
 public class PlayerCharacter extends GameObject {
-    private static PlayerCharacter prototype;
+    private static PlayerCharacter player;
     private int limitRight;
     private int limitLeft;
     private int limitTop;
@@ -76,9 +76,9 @@ public class PlayerCharacter extends GameObject {
      * @see GameObject
      */
     public static PlayerCharacter create(Id id, ApplicationHandler app){
-        if(prototype == null)
-            prototype = new PlayerCharacter(id, app);
-        return prototype;
+        if(player == null)
+            player = new PlayerCharacter(id, app);
+        return player;
     }
 
     /**
@@ -88,7 +88,7 @@ public class PlayerCharacter extends GameObject {
      */
     @Override
     public PlayerCharacter cloneObject() {
-        return new PlayerCharacter(prototype);
+        return new PlayerCharacter(player);
     }
 
     /**
